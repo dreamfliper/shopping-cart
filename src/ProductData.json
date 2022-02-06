@@ -1,0 +1,26 @@
+[
+  {
+    "productName": "Sectional Sofa",
+    "price": 78900,
+    "image": "https://i.ibb.co/q79KfQr/pexels-pixabay-276583-removebg-preview-1.png",
+    "inventory": 5
+  },
+  {
+    "productName": "Two Seater Sofa",
+    "price": 2900,
+    "image": "https://i.ibb.co/3BbZvtQ/pexels-andrea-piacquadio-3757055-removebg-preview-1.png",
+    "inventory": 8
+  },
+  {
+    "productName": "Sectional Sofa 2 ",
+    "price": 3900,
+    "image": "https://i.ibb.co/K6PL38P/pexels-pixabay-276566-removebg-preview-1.png",
+    "inventory": 2
+  },
+  {
+    "productName": "Sectional Sofa 3",
+    "price": 6900,
+    "image": "https://i.ibb.co/DgFfGcm/paul-weaver-n-Wid-MEQsn-AQ-unsplash-removebg-preview-1.png",
+    "inventory": 6
+  }
+]

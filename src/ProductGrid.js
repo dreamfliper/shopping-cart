@@ -1,15 +1,15 @@
 import React from 'react'
 
-export function ProductGrid() {
-  return (
-    <div className="mx-auto container px-6 xl:px-0 py-12">
-      <Category />
-      <ProductItem />
-      <ProductItem />
-      <ProductItem />
-    </div>
-  )
-}
+export const ProductGrid = ({ products }) => (
+  <div className="mx-auto container px-6 xl:px-0 py-12">
+    <Category />
+    <GridContainer>
+      {products.map(productDetail => (
+        <ProductItem {...productDetail} />
+      ))}
+    </GridContainer>
+  </div>
+)
 
 const Category = ({ img, imgSm, title }) => (
   <div className="flex flex-col justify-center">
@@ -33,34 +33,32 @@ const Category = ({ img, imgSm, title }) => (
   </div>
 )
 
-const ProductItem = props => (
+const GridContainer = ({ children }) => (
   <div className="flex flex-col">
-    <div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
-      <div className="group transition duration-500 relative bg-gray-50 sm:p-28 py-36 px-10 flex justify-center items-center">
-        <img
-          className="transition duration-500"
-          src="https://i.ibb.co/q79KfQr/pexels-pixabay-276583-removebg-preview-1.png"
-          alt="sofa-2"
-        />
-        <div className="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-          <div>
-            <p className="transition duration-500 text-xl leading-5 text-gray-600">
-              Sectional Sofa
-            </p>
-          </div>
-          <div>
-            <p className="transition duration-500 text-xl font-semibold leading-5 text-gray-800">
-              $78900
-            </p>
-          </div>
-        </div>
-        <div className="transition duration-500 absolute bottom-8 right-8 flex justify-start items-end flex-col space-x-2">
-          <span className="pb-1.5">Left: 234</span>
-          <button className="bg-white border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5">
-            Add To Cart
-          </button>
-        </div>
+    <div className="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">{children}</div>
+  </div>
+)
+
+const ProductItem = ({ productName, image, price, inventory }) => (
+  <div className="group transition duration-500 relative bg-gray-50 sm:p-28 py-36 px-10 flex justify-center items-center">
+    <img className="transition duration-500" src={image} alt="sofa-2" />
+    <div className="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
+      <div>
+        <p className="transition duration-500 text-xl leading-5 text-gray-600">
+          {productName}
+        </p>
       </div>
+      <div>
+        <p className="transition duration-500 text-xl font-semibold leading-5 text-gray-800">
+          ${price}
+        </p>
+      </div>
+    </div>
+    <div className="transition duration-500 absolute bottom-8 right-8 flex justify-start items-end flex-col space-x-2">
+      <span className="pb-1.5">Left: {inventory}</span>
+      <button className="bg-white border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5">
+        Add To Cart
+      </button>
     </div>
   </div>
 )

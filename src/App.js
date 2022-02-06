@@ -1,12 +1,13 @@
 import React from 'react'
 import { ProductGrid } from './ProductGrid'
-import { ShoppingItem } from './ShoppingItem'
+import { ShoppingCart } from './ShoppingCart'
+import productData from './ProductData.json'
 
 function App() {
   return (
     <>
-      <ProductGrid></ProductGrid>
-      <ShoppingItem></ShoppingItem>
+      <ProductGrid products={productData} />
+      <ShoppingCart></ShoppingCart>
     </>
   )
 }
