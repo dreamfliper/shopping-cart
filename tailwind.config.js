@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: [
     './src/**/*.html',
     './src/**/*.js',
@@ -8,8 +9,8 @@ module.exports = {
     './public/index.html',
   ],
   theme: {
-    extend: {}
+    extend: {},
   },
   variants: {},
-  plugins: []
+  plugins: [],
 }
