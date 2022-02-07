@@ -1,11 +1,16 @@
 import React from 'react'
 
-export const ProductGrid = ({ products }) => (
+export const ProductGrid = ({ products, cta, cart }) => (
   <div className="mx-auto container px-6 xl:px-0 py-12">
     <Category />
     <GridContainer>
       {products.map(productDetail => (
-        <ProductItem {...productDetail} />
+        <ProductItem
+          key={productDetail.id}
+          cartCount={cart[productDetail.id]}
+          onClick={cta(productDetail)}
+          {...productDetail}
+        />
       ))}
     </GridContainer>
   </div>
@@ -39,7 +44,7 @@ const GridContainer = ({ children }) => (
   </div>
 )
 
-const ProductItem = ({ productName, image, price, inventory }) => (
+const ProductItem = ({ cartCount, productName, image, price, inventory, onClick }) => (
   <div className="group transition duration-500 relative bg-gray-50 sm:p-28 py-36 px-10 flex justify-center items-center">
     <img className="transition duration-500" src={image} alt="sofa-2" />
     <div className="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
@@ -55,8 +60,13 @@ const ProductItem = ({ productName, image, price, inventory }) => (
       </div>
     </div>
     <div className="transition duration-500 absolute bottom-8 right-8 flex justify-start items-end flex-col space-x-2">
-      <span className="pb-1.5">Left: {inventory}</span>
-      <button className="bg-white border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5">
+      <span className="pb-1.5">Left: {inventory - cartCount}</span>
+      <button
+        disabled={!(inventory - cartCount)}
+        onClick={onClick}
+        className={`${
+          !(inventory - cartCount) && 'opacity-30'
+        } bg-white border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5`}>
         Add To Cart
       </button>
     </div>
