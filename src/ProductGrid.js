@@ -64,9 +64,10 @@ const ProductItem = ({ cartCount, productName, image, price, inventory, onClick 
       <button
         disabled={!(inventory - cartCount)}
         onClick={onClick}
-        className={`${
-          !(inventory - cartCount) && 'opacity-30'
-        } bg-white border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5`}>
+        className={`${!(inventory - cartCount) && 'opacity-30'} ${
+          inventory - cartCount === 1 ? 'bg-yellow-100' : 'bg-white'
+        }
+        border rounded-lg active:bg-gray-800 active:text-gray-200 border-gray-600 p-1.5`}>
         Add To Cart
       </button>
     </div>
